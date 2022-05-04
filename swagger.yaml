@@ -1,0 +1,272 @@
+openapi: 3.0.0
+info:
+  title: NODE-REST-API
+  description: MongoDb ExpressJS Node API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8800/
+    description: Localhost Default server
+components:
+  securitySchemes:
+    ApiKeyAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
+
+  schemas:
+    Post:
+      type: object
+      properties:
+        title:
+          type: string
+        body:
+          type: string
+        author:
+          type: string
+        img:
+          type: string
+
+          
+    
+    message:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        message:
+          type: string
+
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        username:
+          type: string
+        profilepicture:
+          type: string
+        coverpicture:
+          type: string
+        isAdmin:
+          type: string
+          
+          
+
+paths:
+
+  /api/auth/register:
+    post:
+      summary: Register a new User
+      description: Register a new User in the database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+
+      responses:
+        201:
+          description: User created succesfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  _id:
+                    type: string
+
+  /api/auth/login:
+    post:
+      summary: Loging in a User
+      description: Loging in a User in order to get JWT token (auth-token)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      
+      responses:
+        200:
+          description: User logged in succesfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  data:
+                    type: string
+
+  /api/posts:
+    get:
+      summary: Retrieves a list of posts
+      description: Retrieves a list of posts as JSON objects. 
+      responses:
+        202:
+          description: A list of Posts JSON objects in an array.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Post"
+    
+    post:
+      summary: Create a new Post
+      description: Create a new Post
+      security:
+         - ApiKeyAuth: []      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Post"
+
+      responses:
+        200:
+          description: Post created succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Post"
+
+  /api/posts/{id}:
+    get:
+      summary: Specific Post
+      description: Retrieves a specific Post based on it id. 
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string
+      responses:
+        201:
+          description: A Post in the format of a JSON object.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Post"
+   
+    put:
+      summary: Updates a specific Post
+      description: Updates a specific Post based on it id
+      security:
+       - ApiKeyAuth: []            
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id 
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Post"
+
+      responses:
+        202:
+          description: Post updated succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Post"
+
+    delete:
+      summary: Deletes a specific Post
+      description: Deletes a specific Blogs based on it id
+      security:
+         - ApiKeyAuth: []            
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string      
+
+      responses:
+        202:
+          description: Post deleted succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Post"
+ 
+  /api/messages:
+    get:
+      summary: Retrieves a list of messages
+      description: Retrieves a list of messages as JSON objects. 
+      responses:
+        202:
+          description: A list of Messages JSON objects in an array.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/message"
+    
+    post:
+      summary: Create a new Message in messageDB
+      description: Create a new message
+     
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/message"
+
+      responses:
+        201:
+          description: Message created succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/message"
+
+  /api/messages/{id}:
+    delete:
+      summary: Delete a specific Message
+      description: Deletes a specific Messages based on it id
+      security:
+      #  - ApiKeyAuth: []            
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string      
+
+      responses:
+        202:
+          description: Message deleted succesfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/message"
