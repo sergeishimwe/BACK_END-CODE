@@ -1,3 +1,4 @@
+var PORT = process.env.PORT || 8800;
 const express = require("express");
 
 const app = express();
