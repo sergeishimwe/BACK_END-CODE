@@ -49,4 +49,4 @@ jobs:
       - name: Add remote orgin to Heroku
         run: git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY}}@git.heroku.com/${{ secrets.HEROKU_APP_NAME}}.git
       - name: Deploy code to heroku
-        run: git push heroku main
+        run: git push heroku master
