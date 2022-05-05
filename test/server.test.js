@@ -12,28 +12,9 @@ before((done) => {
     done();
 })
 
-// after((done) => {
-//     blogDb.deleteMany({}, function (err) { });
-//     done();
-// })
 
-describe('/api/blogs TEST on the bloges_DB Collection', () => {
-//     it("It should test if routes and test files are conneected and working", (done) => {
-//         chai.request(app)
-//             .get("/api/welcome")
-//             .end((err, res) => {
-//                 res.should.have.status(302);
-//                 done()
-//             })
-//     })
-// it("one", (done) =>{
-//       chai.request(app)
-//       .get("")
-//       .end((err, res)=>{
-           
-//       })
 
-// })
+describe('/api/posts TEST on the bloges_DB Collection', () => {
     it("should verify that we have 0 blogs in the DB", (done) => {
         chai.request(app)
             .get("/api/posts")
@@ -71,7 +52,7 @@ describe('/api/blogs TEST on the bloges_DB Collection', () => {
         done();
     })
 
-    it("Should retrieve blogs from database", (done) => {
+    it("Should retrieve posts from database", (done) => {
         let len;
         chai.request(app)
             .get("/api/posts")
@@ -160,8 +141,8 @@ describe('/api/posts/:id/comment .. PUT', () => {
     });
 })
 
-describe('/api/messages DELETE', () => {
-    it('it should DELETE a message given the id', (done) => {
+describe('/api/posts DELETE', () => {
+    it('it should DELETE a post given the id', (done) => {
         let post = new blogDb({
             title: "this is the first article",
             body: "this is the body of the post",
@@ -180,41 +161,6 @@ describe('/api/messages DELETE', () => {
                     });
                 });
             });
-
-// describe('Testing the MIDDLEWARE functionality and delete request', function() {
-//     it('Should be able to access the protected routes, in my case DELETE route', function(done) {
-//                 // follow up with login
-//                 chai.request(app)
-//                     .post('/api/auth/login')
-//                     // send user login details
-//                     .send({
-//                         email: "sergeishimwe12@gmail.com",
-//                         password: "test123"
-//                     })
-//                     .end((err, res) => {
-//                         res.body.should.have.property('token');
-//                         var token = res.body.token;
-//                         // follow up with requesting user protected page
-//                         chai.request(app)
-//                             .get('/api/posts')
-//                             .end(function(err, res) {
-//                                 chai.request(app)
-//                                 .delete(`/api/posts/${res._id}`)
-//                                     // we set the auth header with our token
-//                                     .send({
-//                                         token:`Bearer ${token}` 
-//                                     })
-//                                     .end((error, res)=>{
-//                                         res.should.have.status(202);
-//                                         res.body.should.have.property('message');
-//                                         res.body.message.should.equal('Post deleted Successfuly!!');
-//                                         done();
-//                                     });
-//                             })
-//                     })
-         
-//                 })
-// });
 
 
 })

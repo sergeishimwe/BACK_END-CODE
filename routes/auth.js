@@ -6,7 +6,7 @@ const requireAuth = require("../middleware/authMiddleware")
 //REGISTER
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id) => {
-    return jwt.sign({ id }, "serge", {
+    return jwt.sign({ id }, process.env.SECRET_KEY_DB, {
         expiresIn: maxAge
     })
 }
@@ -57,7 +57,7 @@ router.post("/login", async (req, res) => {
 )
 
 router.post('/logout',(req, res) => {
-    res.cookie('jwt'," ", {maxAge:1000*1000 });
+    res.cookie('jwt'," ", {maxAge:1 });
     res.status(202).send({ msg: 'You have been Logged Out' });
 
     // const authHeader = req.headers["authorization"];

@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const { application } = require("express");
 // const Post = require ("../models/Post");
-const { post } = require("./auth");
+
 const requireAuth = require("../middleware/authMiddleware");
-const { route } = require("./users");
+
 const blogDb = require("../models/Post");
 
 //create a post
@@ -37,7 +37,7 @@ router.get("/",(req,res) => {
   })
 
   //get specific blog by providing id.
-router.get("/:id",async(req,res)=>{
+router.get("/:id", async(req,res)=>{
       try{
             const post =await blogDb.findById(req.params.id)
             res.status(201).json(post)
@@ -102,7 +102,7 @@ blogDb.findOneAndUpdate(
 
 //delete specific posts
 
-router.delete("/:id",requireAuth, async(req,res)=>{
+router.delete("/:id", async(req,res)=>{
 
       const id = req.params.id;
     blogDb.findByIdAndDelete(id)

@@ -12,10 +12,7 @@ before((done) => {
     done();
 })
 
-// after((done) => {
-//     Messagedb.deleteMany({}, function (err) { });
-//     done();
-// })
+
 
 describe('/api/messages TEST on the messagees_DB Collection', () => {
     it("should verify that we have 0 messages in the DB", (done) => {

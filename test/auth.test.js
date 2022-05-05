@@ -95,39 +95,4 @@ describe('/api/auth/register TEST on the bloges_DB Collection', () => {
 })
 
 
-// describe('AUTHENTICATION/  testing protected routes', function () {
-//     it('Should not register the user twice', function (done) {
-//         let newUser = {
-//             email: "sergeishimwe12@gmail.com",
-//             password: "test123"
-//         }
-//         chai.request(app)
-//             // register request
-//             .post('/api/auth/register')
-//             .send(newUser
-//             )
-//             .end((err, res) => { // when we get a resonse from the endpoint
-//                 res.should.have.status(400);
-//                 res.body.message.should.be.equal("The user already exists");
-//                 done();
-//             });
-//     })
-// it('Should not allow one to register password < 6 character', function (done) {
-//             let newUser = {
-//                 email: "sergeishimwe@gmail.com",
-//                 password: "tet12"
-//             }
-//             chai.request(app)
-//                 // register request
-//                 .post('/api/auth/register')
-//                 .send(newUser
-//                 )
-//                 .end((err, res) => { // when we get a resonse from the endpoint
-//                     res.should.have.status(400);
-//                     res.body.message.should.be.equal("Enter minimum 6 character of password");
-//                     done();
-//                 });
-//         })
-//    })
-
 
