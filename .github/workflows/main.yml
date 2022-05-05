@@ -38,13 +38,13 @@ jobs:
     name: Deploy
     needs: [test]
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
 
-          
+
+    steps:
+       - name: Test
+         uses: actions/setup-node@v2
+         width: 
+             fetch-depth: 0    
        - name: Add remote origin to Heroku
        run: git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
       
