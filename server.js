@@ -1,4 +1,4 @@
-var PORT = process.env.PORT || 8800;
+
 const express = require("express");
 
 const app = express();
@@ -31,6 +31,8 @@ app.use(cors());
 
 dotenv.config();
 
+const PORT = process.env.PORT || 8800;
+
 mongoose.connect(process.env.MONGO_URL,{
      useNewUrlParser: true,
      useUnifiedTopology: true,
@@ -49,6 +51,6 @@ app.use("/api/messages", msgRoute );
 
 module.exports = app;
 
-app.listen(8800,()=>{
-     console.log("Server is running smothly!!") 
+app.listen(PORT,()=>{
+     console.log(`Server is running on http://localhost:${PORT}`)
 })
