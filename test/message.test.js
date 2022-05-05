@@ -59,7 +59,7 @@ describe('/api/messages TEST on the messagees_DB Collection', () => {
                 var messages = res.body;
                 len = messages.length;
                 res.should.have.status(202);
-                expect(messages).to.be.an("array");
+                expect(messages).to.be.an("object");
                 expect(messages[0]).to.be.an('object');
                 expect(len).to.not.be.an('undefined');
                 done();
