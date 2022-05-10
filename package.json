@@ -4,8 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "mocha --timeout 300000 test/**.test.js --exit",
+    "dev": "set NODE_ENV=production&&nodemon server.js",
+    "start": "node server.js",
+    "test": "set NODE_ENV=test&&mocha --timeout 300000 test/**.test.js --exit",
     "coverage": "nyc --reporter=lcov --reporter=json-summary --reporter=text npm run test"
   },
   "keywords": [],
@@ -20,6 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.1",
     "morgan": "^1.10.0",
+    "path": "^0.12.7",
     "swagger-ui-express": "^4.3.0",
     "yamljs": "^0.3.0"
   },

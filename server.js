@@ -1,44 +1,32 @@
 
+
 const express = require("express");
 
 const app = express();
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 const helmet = require("helmet");
+const path = require("path");
+
 const morgan = require("morgan");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/Posts");
 const msgRoute = require("./routes/messages");
+const connectDataBase = require("./database/connection")
 var cors = require('cors');
-
-
+require("dotenv").config();
 
 // swagger deps
 const swaggerUi = require("swagger-ui-express");
 const yaml = require("yamljs");
 
-
-
-
+connectDataBase();
 //setup-swagger
 
 const swaggerDefinition = yaml.load("./swagger.yaml");
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDefinition))
 
-
 app.use(cors());
-
-dotenv.config();
-
 const PORT = process.env.PORT || 8800;
-
-mongoose.connect(process.env.MONGO_URL,{
-     useNewUrlParser: true,
-     useUnifiedTopology: true,
-   },()=>{
-       console.log("Connected to mongoDB")
-});
 
 app.use(express.json());
 app.use(helmet());
