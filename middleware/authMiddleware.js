@@ -12,9 +12,10 @@ const requireAuth = (req, res, next)=>{
 
     //   use npm run start
     } else {
-      bearerHeader = req.headers.cookie;
-         console.log(cookies);
-        bearerToken = cookies.slice(4);
+      // bearerHeader = req.headers.cookie;
+      //    console.log(cookies);
+      //   bearerToken = cookies.slice(4);
+      bearerHeader = req.headers['authorization'];
     }
 
     if (typeof bearerHeader !== "undefined" && typeof bearerHeader !== "null") {
