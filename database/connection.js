@@ -27,13 +27,11 @@ if (process.env.NODE_ENV == "production") {
   DB_URL = process.env.MONGO_URL_DEFAULT;
   console.log(DB_URL);
 }
-    const url = process.env.MONGO_URL;
         
 const connectDataBase = async () => {
   try {
-    // console.log(url)
     const con = await mongoose.connect(
-     url,
+      DB_URL,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
