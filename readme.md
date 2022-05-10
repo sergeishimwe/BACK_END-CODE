@@ -2,8 +2,7 @@
 ---
 
 ## TEST COVERAGE BADGES:
--Statements: ![](https://img.shields.io/badge/Coverage-64%25-F2E96B.svg?style=flat&logoColor=white&color=blue&prefix=$statements$)
-- Branches: ![](https://img.shields.io/badge/Coverage-23%25-F2C572.svg?style=social&logo=ktor&logoColor=black&color=red&prefix=$branches$)
+- Statements: ![](https://img.shields.io/badge/Coverage-64%25-F2E96B.svg?style=flat&logoColor=white&color=blue&prefix=$statements$)
 - Functions: ![](https://img.shields.io/badge/Coverage-55%25-F2E96B.svg?prefix=$functions$)
 - Lines: ![](https://img.shields.io/badge/Coverage-64%25-F2E96B.svg?prefix=$lines$)
 ---
