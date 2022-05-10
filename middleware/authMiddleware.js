@@ -29,9 +29,11 @@ const requireAuth = (req, res, next)=>{
       }
 
       else {
-                 const cookies = req.headers.cookie;
-                 console.log(cookies);
-                bearerToken = cookies.slice(4);
+                //  const cookies = req.headers.cookie;
+                //  console.log(cookies);
+                // bearerToken = cookies.slice(4);
+                let bearerArr = bearerHeader.split(" ");
+                bearerToken = bearerArr[1];
       }
 
       //get the token from the array
