@@ -2,10 +2,10 @@
 ---
 
 ## TEST COVERAGE BADGES:
-- $statements$
-- $branches$
-- $functions$
-- $lines$
+- ![](https://img.shields.io/badge/Coverage-64%25-F2E96B.svg?style=flat&logoColor=white&color=blue&prefix=$statements$)
+- ![](https://img.shields.io/badge/Coverage-23%25-F2C572.svg?style=social&logo=ktor&logoColor=black&color=red&prefix=$branches$)
+- ![](https://img.shields.io/badge/Coverage-55%25-F2E96B.svg?prefix=$functions$)
+- ![](https://img.shields.io/badge/Coverage-64%25-F2E96B.svg?prefix=$lines$)
 ---
 ---
 ## LET Us ***exprole*** the technologies of the projects and ***how it might work for you***
